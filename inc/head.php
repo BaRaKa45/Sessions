@@ -1,5 +1,4 @@
 <?php
-session_start();
 if(isset($_POST['disconnect'])) {
     session_destroy();
     header('Location: login.php');
@@ -49,7 +48,7 @@ if(isset($_POST['disconnect'])) {
               Cart
             </a>
           </li>
-            <?php if(($_SESSION['loginname'])) { ?>
+            <?php if(isset($_SESSION['loginname'])) { ?>
             <li>
                 <form method="POST" action="../index.php" class="form-inline">
                     <button class="btn btn-primary navbar-btn btn-deconnect" name="disconnect" type="submit">Disconnect</button>
@@ -61,6 +60,6 @@ if(isset($_POST['disconnect'])) {
     </div><!-- /.container-fluid -->
   </nav>
   <div class="container-fluid text-right">
-    <strong>Hello <?= $_SESSION['loginname'] ?> !</strong>
+    <strong>Hello <?php if(isset($_SESSION['loginname'])) { echo $_SESSION['loginname']; } ?> !</strong>
   </div>
 </header>
